@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Unsupervised Learning of Shape and Pose with Differentiable Point Clouds</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Unsupervised Learning of Shape and Pose with Differentiable Point Clouds</h1>
+        </div>
+        <div class="container center-block mt-4">
+          <div class="row">
+            <div class="col-md">
+              <a class="author-link" href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-multimodal-computing/people/eldar-insafutdinov/">Eldar Insafutdinov</a>
+            </div>
+            <div class="col-md">
+              <a class="author-link" href="https://dosovits.github.io/">Alexey Dosovitskiy</a>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md lead">
+              Max Planck Institute for Informatics
+            </div>
+            <div class="col-md lead">
+              Intel Intelligent Systems Lab
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+        <p>
+        <p class="lead">In NIPS, 2018
+        <p>
+        </div>
+        
+        <div id="teaser-cloud" align="center" class="container">
+        <!-- Here goes teaser point cloud -->
+        </div>
+
+        <div class="container mt-4"" align="center">
+          <img src="figures/overview.png" class="img-fluid">
+        </div>
+
+        <div class="container mt-4">
+          <p class="lead" align="left">  We address the problem of learning accurate 3D shape and camera pose from a collection of unlabeled category-specific images.
+  We train a convolutional network to predict both the shape and the pose from a single image by minimizing the reprojection error: given several views of an object, the projections of the predicted shapes to the predicted camera poses should match the provided views.
+  To deal with pose ambiguity, we introduce an ensemble of pose predictors that we then distill it to a single “student” model.
+  To allow for efficient learning of high-fidelity shapes, we represent the shapes by point clouds and devise a formulation allowing for differentiable projection of these.
+  Our experiments show that the distilled ensemble of pose predictors learns to estimate the pose accurately, while the point cloud representation allows to predict detailed shape models.</p>
+        </div>
+
+        <div class="container center-block">
+          <div class="row">
+            <div class="col-md">
+              [ <a class="author-link" href="https://arxiv.org/abs/1810.09381">Paper</a> ]
+              &nbsp;&nbsp;&nbsp;
+              [ <a class="author-link" href="resources/bibtex.txt">Bibtex</a> ]
+          </div>
+        </div>
+
+      </section>
+
+      <div class="container">
+        <hr>
+      </div>
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h2 class="jumbotron-heading">Video</h2>
+        </div>
+
+        <div class="container top15 embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LuIGovKeo60" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <div class="container">
+        <hr>
+      </div>
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h2 class="jumbotron-heading">Reconstructions</h2>
+        </div>
+
+        <div class="container top15">
+          <div class="row">
+            <div class="col-md-6">
+				<div id="class-toggle" class="btn-group colors" data-toggle="buttons">
+				  <label class="btn btn-light active">
+				    <input type="radio" name="options" autocomplete="off" synthset="03001627" checked>Chair
+				  </label>
+				  <label class="btn btn-light">
+				    <input type="radio" name="options" autocomplete="off" synthset="02691156">Airplane
+				  </label>
+				  <label class="btn btn-light">
+				    <input type="radio" name="options" autocomplete="off" synthset="02958343">Car
+				  </label>
+				</div>
+	        </div>
+	      </div>
+        </div>
+
+        <div class="container top15">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="pre-scrollable py-4 bg-light">
+                <div class="container">
+
+                  <div class="row" id="gallery-container">
+                    <!-- This one will be filled it programmatically with images -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div id="gallery-viewer" class="container">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        </section>
+
+    </main>
+
+    <div class="container">
+      <hr>
+    </div>
+
+    <footer class="jumbotron text-center text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>&copy; 2018 Eldar Insafutdinov.</p>
+      </div>
+    </footer>
+
+    <script type="x-tmpl-mustache" id="listitem-template">
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <a href="javascript:on_gallery_click('{{{model_full_id}}}')">
+            <img class="card-img-top" src="gallery/images/{{{model_full_id}}}.png">
+          </a>
+        </div>
+      </div>
+    </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.2/mustache.min.js"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap/jquery-slim.min.js"><\/script>')</script>
+    <script src="bootstrap/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="bootstrap/holder.min.js"></script>
+
+    <script src="build/three.js"></script>
+
+    <script src="js/controls/TrackballControls.js"></script>
+    <script src="js/Detector.js"></script>
+    <script src="js/libs/stats.min.js"></script>
+
+    <script type="text/javascript" src="point_cloud.js"></script>
+  </body>
+</html>

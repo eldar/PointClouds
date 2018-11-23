@@ -1,0 +1,7 @@
+@article{insafutdinov2018pointclouds,
+  author = {Insafutdinov, Eldar and Dosovitskiy, Alexey},
+  title = "{Unsupervised Learning of Shape and Pose with Differentiable Point Clouds}",
+  number = {arXiv:1810.09381},
+  journal = {NIPS (to appear)},
+  year = {2018}
+}
